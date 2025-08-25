@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Az én világom</title>
+  <meta name="description" content="9. osztály – fotós témájú statikus weboldal">
+  <style>
+    :root {
+      --bg: #0f1220;
+      --card: #151933;
+      --text: #e9ecf1;
+      --muted: #aeb6cf;
+      --accent: #6aa0ff;
+      --accent-2: #7cf3d0;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    a { color: var(--accent); text-decoration: none; }
+    header { position: sticky; top:0; z-index:10; background: rgba(15,18,32,0.85); backdrop-filter: blur(6px); border-bottom: 1px solid #202646; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 16px; }
+    .nav { display:flex; align-items:center; gap:12px; }
+    .brand { font-weight:700; letter-spacing:.3px; }
+    .nav a.btn { padding:8px 12px; border-radius:10px; }
+    .nav a.btn.active, .nav a.btn:hover { background: #1c2247; }
+    main { padding: 20px 16px 60px; }
+    .grid { display:grid; gap:16px; }
+    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; }
+    .card { background: var(--card); border: 1px solid #202646; border-radius:16px; padding:16px; }
+    .muted { color: var(--muted); font-size: 15px; }
+    .title { font-size: clamp(24px, 2.5vw, 36px); margin: 0 0 8px; }
+    .actions { display:flex; gap:10px; margin-top:10px; flex-wrap: wrap; }
+    button, .button { background: var(--accent); color:#0a0d1c; border:0; padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer; }
+    .button.secondary { background: #2a315f; color: var(--text); }
+    img { max-width: 100%; height: auto; border-radius:12px; display:block; }
+    .gallery { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:14px; }
+    figure { margin:0; }
+    figcaption { font-size:14px; color: var(--muted); margin-top:6px; }
+    .about { display:grid; grid-template-columns: 1fr; gap:16px; }
+    footer { text-align:center; color:#9aa3c5; font-size: 14px; padding: 18px; border-top:1px solid #202646; }
+    @media (max-width: 840px) { .hero { grid-template-columns: 1fr; } }
+  </style>
+
+
+
+<link rel="stylesheet" href="style.css">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pBV+F7V8jgj0JqX0yEwW6+6Z6+9q5wO7TzC/7j4X+f9PbMxS1xj2XqL8rUe0Q+2P" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <nav style="margin-left:auto; display:flex; gap:6px;">
+        <a href="#home" class="btn" data-page="home">Főoldal</a>
+        <a href="#galeria" class="btn" data-page="galeria">Galéria</a>
+        <a href="#rolam" class="btn" data-page="rolam">Rólam</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="home" class="page">
+      <div class="hero">
+        <div class="card">
+          <h1 class="title">Űr & Fekete lyukak – képek, amik beszippantanak</h1>
+          <p class="muted">Kis diákprojekt nagy álmokkal: egyszerű, gyorsan betöltő, statikus oldal. Nincs trükk, csak képek és pár mondat, hogy mi micsoda.</p>
+          <div class="actions">
+            <a class="button" href="#galeria" data-page="galeria">Ugorj a galériára</a>
+            <a class="button secondary" href="#rólam" data-page="rólam">A rólam szekcióban olvashatsz kis érdekességeket.</a>
+          </div>
+        </div>
+        <img class="card" src="assets/space-nebula.jpg" alt="Űr háttérkép">
+      </div>
+
+      <div class="grid" style="margin-top:16px;">
+        <div class="card">
+          <strong>Mit tud ez az oldal?</strong>
+          <ul class="muted">
+            <li>Bemutatja kedvenc hobbimat.</li>
+            <li>Csillagászat.</li>
+            <li>És talán meghozza kedved az egyik kedvenc filmemhez amit nagyon ajánlok: Csillagok között / Interstellar.
+          </ul>
+        </div>
+        <div class="card">
+          <strong>A galériáról tudni valók.</strong>
+          <p class="muted">A galériában a megfigyelhető világegyetem legikonikusabb fotói találhatóak.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="page" hidden>
+      <h2 class="title">Galéria</h2>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <section id="rolam" class="page" hidden>
+      <h2 class="title"></h2>
+      <div class="about">
+        <div class="card">
+          <p class="muted">9. osztályos kis projekt, témánk az űr. Cél: 2025 08 25 pótvizsga letudása.</p>
+          <p class="muted">A kedvencem az űrben az még pedig a fekete lyukak és miért?</p>
+          <p class="muted">Azért mert egy fekete lyuk tömege olyan hihetetlenül sok hogy besüllyeszti maga alatt a téridőt.</p>
+          <p class="muted">Ami azt jelenti hogy számodra az idő lelassul minnél közelebb vagy a közép pontjához.</p>
+          <p class="muted">Ez azt is jelenti hogy a földön például eltellik 2 év az neked akár 5 óra is lehet és ez fizikailag a külsődre is hat mint például az életkorodra.</p>
+          <p class="muted">És mi történik egy fekete lyuk belsejében? Számodra az idő megáll teljesen de ez csak mások szempontjából észlelhető a tiédből pedig hatalmas kratasztrófa keletkezik be egy megadott időn még pedig az úgy nevezett spaggetifikáció ami annyit tud hogy lányegébe széttépi az atomjaidat, téged olyan vékonyra tép mint egy hajszál majd tovébb amíg annyira nem tépett szét hogy semmmi nem marad belőled.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+   <script>
+     const images = [
+      { src: 'assets/Space-History.jpg', caption: 'A Holdra szállás' },
+      { src: 'assets/PIA23645.jpg', caption: 'Kék Pötty' },
+      { src: 'assets/Hubble-Pillars-of-Creation.jpg', caption: 'Nebula' },
+      { src: 'assets/sun-blasts-a-m66-flare.jpg', caption: 'A Nap' },
+      { src: 'assets/The_Blue_Marble,_AS17-148-22727.jpg', caption: 'Föld' },
+      { src: 'assets/images.jpg', caption: 'Fekete lyuk' }
+    ];
+      const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('[data-page]');
+    function show(page) {
+      pages.forEach(p => p.hidden = (p.id !== page));
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
+      if (page === 'galeria') initGallery();
+      history.replaceState(null, '', '#' + page);
+    }
+    function initFromHash() {
+      const hash = location.hash.replace('#','') || 'home';
+      show(hash);
+    }
+    navLinks.forEach(a => a.addEventListener('click', (e) => {
+      const page = a.getAttribute('data-page');
+      show(page);
+    }));
+    window.addEventListener('hashchange', initFromHash);
+    initFromHash();
+    let galleryInit = false;
+    function initGallery() {
+      if (galleryInit) return;
+      galleryInit = true;
+      const wrap = document.getElementById('gallery');
+      images.forEach(({src, caption}) => {
+        const fig = document.createElement('figure');
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.src = src;
+        img.alt = caption;
+        const cap = document.createElement('figcaption');
+        cap.textContent = caption;
+        fig.appendChild(img);
+        fig.appendChild(cap);
+        fig.className = 'card';
+        wrap.appendChild(fig);
+      });
+    }
+   </script>
+
+
+
+   <script src="script.js"></script>
+   <div class="PDF">
+    <a href="fájl/New Portable Document 1.pdf" download> töltsd le PDF</a>
+   </div>
+
+  <div class="PPTX">
+    <a href="fájl/A-Vilagegyetem-a-Fekete-Lyukak-es-a-Tejutrendszer-Titkai.pptx" download> töltsd le PPTX</a>
+  </div>
+
+</body>
+</html>
